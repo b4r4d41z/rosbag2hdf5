@@ -1,28 +1,34 @@
-🐢 
-## .bag → .h5 for ROS1 (noetic) 
-
+ 
+## .bag → .h5 for ROS1 (noetic) 🐢
 This project is a Python script that transforms data from .bag to .h5 format. The script works with ROS1 Noetic.
+---
+### UPD:
+4.30.2025 - /action dataset now contains of 6D representation and RPY data of EEF. 
+---
 
 Final structure of the h5 file:
 
 ```
 /                        Group
-/action                  Dataset {875, 16}
-/base_action             Dataset {875, 2}
+/action                  Dataset {541, 20}
+/base_action             Dataset {541, 2}
 /instruction             Dataset {SCALAR}
 /observations            Group
-/observations/effort     Dataset {875, 14}
+/observations/effort     Dataset {541, 14}
 /observations/images     Group
-/observations/images/cam_high Dataset {875, 480, 640, 3}
-/observations/images/cam_left_wrist Dataset {875, 480, 640, 3}
-/observations/images/cam_right_wrist Dataset {875, 480, 640, 3}
+/observations/images/cam_high Dataset {541, 480, 640, 3}
+/observations/images/cam_left_wrist Dataset {541, 480, 640, 3}
+/observations/images/cam_right_wrist Dataset {541, 480, 640, 3}
 /observations/images_depth Group
-/observations/images_depth/cam_high Dataset {875}
-/observations/images_depth/cam_left_wrist Dataset {875}
-/observations/images_depth/cam_right_wrist Dataset {875}
-/observations/qpos       Dataset {875, 16}
-/observations/qvel       Dataset {875, 14}
+/observations/images_depth/cam_high Dataset {541}
+/observations/images_depth/cam_left_wrist Dataset {541}
+/observations/images_depth/cam_right_wrist Dataset {541}
+/observations/qpos       Dataset {541, 16}
+/observations/qvel       Dataset {541, 14}
 ```
+
+Where `/action` contains of `(T; r6d_l, rpy_l, gripper_left, r6d_r, rpy_r, gripper_right)`. 
+Gripper data was taken from `/control_robot_hand_position topic` 
 
 This structure was specifically designed for the [RoboticsDiffusionTransformer](https://github.com/thu-ml/RoboticsDiffusionTransformer) project.
 
