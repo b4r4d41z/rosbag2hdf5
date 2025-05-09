@@ -3,6 +3,7 @@
 This project is a Python script that transforms data from .bag to .h5 format. The script works with ROS1 Noetic.
 ---
 ### UPD:
+5.9.2025 - /qpos have simular structure as /action. 
 4.30.2025 - /action dataset now contains of 6D representation and RPY data of EEF. 
 ---
 
@@ -23,7 +24,7 @@ Final structure of the h5 file:
 /observations/images_depth/cam_high Dataset {541}
 /observations/images_depth/cam_left_wrist Dataset {541}
 /observations/images_depth/cam_right_wrist Dataset {541}
-/observations/qpos       Dataset {541, 16}
+/observations/qpos       Dataset {541, 20}
 /observations/qvel       Dataset {541, 14}
 ```
 
